@@ -1,0 +1,28 @@
+version: '3'
+
+tasks:
+  fbs:
+    desc: "Generate FlatBuffers code for C++ and Java via Python script"
+    cmds:
+      # 将来的に scripts/generate_fbs.py などのPythonスクリプトでラップする想定
+      - flatc --cpp --java -o generated/ schemas/vram_metrics.fbs
+
+  build-mock:
+    desc: "Build C++23 engine mock (CMake)"
+    dir: engine-mock
+    cmds:
+      - cmake -B build -S .
+      - cmake --build build
+
+  build-reader:
+    desc: "Build Java Quarkus reader"
+    dir: quarkus-reader
+    cmds:
+      - ./gradlew build
+
+  build-all:
+    desc: "Build all components"
+    deps: [fbs]
+    cmds:
+      - task: build-mock
+      - task: build-reader

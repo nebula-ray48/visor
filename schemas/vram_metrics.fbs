@@ -1,0 +1,16 @@
+namespace Visor.Conduit;
+
+// VRAMのメモリアロケーション状態を定義するデータ構造
+table VramAllocation {
+    address: uint64;
+    size: uint64;
+    is_free: bool;
+}
+
+table VramMetrics {
+    total_heap_size: uint64;
+    used_size: uint64;
+    allocations: [VramAllocation];
+}
+
+root_type VramMetrics;

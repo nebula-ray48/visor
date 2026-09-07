@@ -1,0 +1,27 @@
+# OS & IDE
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# C++ / CMake
+engine-mock/build/
+engine-mock/out/
+engine-mock/.cache/
+
+# Java / Gradle / Quarkus
+quarkus-reader/.gradle/
+quarkus-reader/build/
+quarkus-reader/out/
+quarkus-reader/bin/
+
+# PHP / Laravel
+laravel-dashboard/vendor/
+laravel-dashboard/.env
+laravel-dashboard/public/hot
+laravel-dashboard/public/storage
+laravel-dashboard/storage/*.key
+
+# FlatBuffers Generated Code
+generated/

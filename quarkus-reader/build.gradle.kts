@@ -1,32 +1,35 @@
 plugins {
     java
-    id("io.quarkus") version "3.8.2"
+    id("io.quarkus") version "3.39.2"
 }
 
 repositories {
     mavenCentral()
 }
 
-val quarkusPlatformGroupId: String by project
-val quarkusPlatformArtifactId: String by project
-val quarkusPlatformVersion: String by project
-
 dependencies {
-    implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
+    implementation(enforcedPlatform("io.quarkus.platform:quarkus-bom:3.39.2"))
     implementation("io.quarkus:quarkus-arc")
     implementation("io.quarkus:quarkus-jackson")
-    testImplementation("io.quarkus:quarkus-junit")
+
+    testImplementation("io.quarkus:quarkus-junit5")
 }
 
 group = "org.visor"
 version = "1.0.0-SNAPSHOT"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_25
-    targetCompatibility = JavaVersion.VERSION_25
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
-    options.compilerArgs.add("-parameters")
+    // プレビュー機能の有効化とパラメータ保持を1つのブロックにまとめました
+    options.compilerArgs.addAll(listOf("-parameters", "--enable-preview"))
+    options.release.set(21)
+}
+
+tasks.withType<io.quarkus.gradle.tasks.QuarkusDev> {
+    jvmArgs = listOf("--enable-preview")
 }

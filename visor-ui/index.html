@@ -1,43 +1,25 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/src/styles.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tauri App</title>
-    <script type="module" src="/src/main.ts" defer></script>
-  </head>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visor Profiler</title>
+  <!-- Tailwind CSS をCDNで読み込み -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white font-mono h-screen flex flex-col m-0 overflow-hidden cursor-default">
+<!-- data-tauri-drag-region をつけるとここを掴んでウィンドウを移動できる -->
+<header class="p-4 border-b border-gray-700 bg-gray-800 select-none" data-tauri-drag-region>
+  <h1 class="text-xl font-bold tracking-wider pointer-events-none">VISOR <span class="text-blue-500">PROFILER</span></h1>
+</header>
 
-  <body>
-    <main class="container">
-      <h1>Welcome to Tauri</h1>
+<main class="p-6 flex-grow flex flex-col items-center justify-center">
+  <div class="bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-700 text-center w-96">
+    <h2 class="text-sm text-gray-400 uppercase tracking-widest mb-2">Engine Frame Count</h2>
+    <p id="frame-counter" class="text-6xl text-green-400 font-bold tabular-nums">0</p>
+  </div>
+</main>
 
-      <div class="row">
-        <a href="https://vite.dev" target="_blank">
-          <img src="/src/assets/vite.svg" class="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img
-            src="/src/assets/tauri.svg"
-            class="logo tauri"
-            alt="Tauri logo"
-          />
-        </a>
-        <a href="https://www.typescriptlang.org/docs" target="_blank">
-          <img
-            src="/src/assets/typescript.svg"
-            class="logo typescript"
-            alt="typescript logo"
-          />
-        </a>
-      </div>
-      <p>Click on the Tauri logo to learn more about the framework</p>
-
-      <form class="row" id="greet-form">
-        <input id="greet-input" placeholder="Enter a name..." />
-        <button type="submit">Greet</button>
-      </form>
-      <p id="greet-msg"></p>
-    </main>
-  </body>
+<script type="module" src="/src/main.ts"></script>
+</body>
 </html>

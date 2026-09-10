@@ -14,6 +14,12 @@ tasks:
       - cmake -B build -S .
       - cmake --build build
 
+  build-profiler:
+    desc: "Build Vulkan profiler and engine mock"
+    cmds:
+      - cmake -B build -S .
+      - cmake --build build
+
   build-reader:
     desc: "Build Java Quarkus reader"
     dir: quarkus-reader
@@ -21,8 +27,5 @@ tasks:
       - ./gradlew build
 
   build-all:
-    desc: "Build all components"
-    deps: [fbs]
-    cmds:
-      - task: build-mock
-      - task: build-reader
+    desc: "Build the profiler project"
+    deps: [build-profiler]

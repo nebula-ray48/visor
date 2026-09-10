@@ -1,9 +1,9 @@
-# Visor (VRAM Profiler)
+# Visor Profiler
 
-High-performance, cross-platform VRAM and memory bandwidth profiler.
+要件定義書に沿った、Vulkan + Dear ImGui + ImPlot の独立プロファイラです。
 
 ## Architecture
-- **Engine Mock (C++23):** Writes memory metrics to OS Shared Memory (Memory-Mapped Files).
-- **Conduit (FlatBuffers):** Cross-language data serialization schema.
-- **Reader (Java):** Reads shared memory via FFM API (Project Panama) with zero-copy.
-- **Dashboard (PHP/Laravel):** Real-time web UI using FrankenPHP.
+- `include/visor/shared_metrics.hpp`: エンジンとプロファイラで共有する固定レイアウト
+- `engine-mock`: 共有メモリのデータ送信元
+- `visor-profiler`: Vulkan ウィンドウと ImGui/ImPlot ダッシュボード
+- `schemas`: 将来の FlatBuffers 拡張用スキーマ

@@ -1,4 +1,7 @@
-# OS & IDE
+build/
+engine-mock/cmake-build-debug/
+visor-profiler/cmake-build-debug/
+generated/# OS & IDE
 .DS_Store
 .idea/
 .vscode/
